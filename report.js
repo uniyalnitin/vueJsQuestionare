@@ -2,16 +2,11 @@ Vue.component('report', {
     props:['questions', 'json_response'],
     template:`
     <div>
-        <ul v-for="response,queId of json_response_obj">
+        <ul v-for="response,queId of json_response">
             <response-detail :response="response" :questions="questions" :json_response="json_response_obj" :queId="queId"></response-detail>
         </ul>
     </div>
     `,
-    computed:{
-        json_response_obj:function(){
-            return this.json_response
-        }
-    }
 });
 
 Vue.component('response-detail',{
