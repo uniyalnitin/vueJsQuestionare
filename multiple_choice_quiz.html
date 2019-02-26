@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Quiz App</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.js"></script>
+    <!-- <link rel="stylesheet" href="transitions.css"> -->
+  </head>
+<body>
+  <div class="container my-4">
+    <div class="row" id="quiz">
+      <div id="questionCard" :style="cardStyle" @mouseenter="updateHoverState('questionCard')">
+        <div class="card-body">
+          <div v-if="introStage">
+            <h1>Welcome to the Quiz: {{title}}</h1>
+            <p>Some kind of text here. Blah blah.</p>
+            <button class="btn btn-primary" @click="startQuiz">START!</button>
+          </div>
+          <div v-if="questionStage">
+            <form>
+              <question-list :questions="questions" :json_response="json_response"></question-list>
+              <button type="submit" value="submit">Submit</button>
+            </form>
+          </div>
+          <!-- <p>{{ json_response }}</p> -->
+          <div v-if="resultsStage">You got {{correct}} right out of {{questions.length}} questions. Your percentage is {{perc}}%.</div>
+        </div>
+      </div>
+
+      <div id="reportCard" :style="cardStyle" @mouseenter="updateHoverState('reportCard',true)">
+        <div class="card-body">
+          <div>
+            <h1>Report</h1>
+            <report :questions="questions" :json_response="json_response"></report>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Load Vue script -->
+  <script src="js/vue.js"></script>
+  <!-- On load, init Vue -->
+  <!-- <script src="dependent_question_component.js"></script> -->
+  <script src="componentsJs/report.js"></script>
+  <script type="text/javascript" src="componentJs/question_component.js"></script>
+  <script src="js/full_quiz_js.js"></script>
+</body>
+</html>

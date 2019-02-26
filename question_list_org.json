@@ -1,0 +1,64 @@
+{
+  "title": "Quiz about Foo",
+  "questions": [
+  {
+    "id": "1",
+    "text": "Is true true?",
+    "answer_type": "sc",
+    "dependency_type": null,
+    "dependency_join": [],
+    "answers": [
+      "True",
+      "False"
+    ],
+    "isrequired": "True",
+    "answer": "t",
+    "show":true
+  },
+  {
+    "id": "2",
+    "text": "Is false true?",
+    "answer_type": "sc",
+    "dependency_type": "single",
+    "dependency_join": [{"1":"True"}],
+    "answers": [
+      "True",
+      "False"
+    ],
+    "isrequired": "True",
+    "answer": "f",
+    "show":false
+  },
+  {
+    "id": "3",
+    "text": "What is the best beer?",
+    "answer_type": "mc",
+    "dependency_type": "single",
+    "dependency_join": [{"1":"True"}],
+    "answers": [
+      "Coors",
+      "Miller",
+      "Bud",
+      "Anchor Steam"
+    ],
+    "isrequired": "True",
+    "answer": "Anchor Steam",
+    "show" : false
+  },
+  {
+    "id": "4",
+    "text": "What is the best cookie?",
+    "answer_type": "mc",
+    "dependency_type": "multiple",
+    "dependency_join": [{ "1":"True","2":"True"},{"3":["Coors", "Miller"]}],
+    "answers": [
+      "Chocolate Chip",
+      "Sugar",
+      "Beer"
+    ],
+    "isrequired": "False",
+    "answer": "Sugar",
+    "show":false
+    }
+  ]
+}
